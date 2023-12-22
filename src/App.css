@@ -2,6 +2,15 @@
   text-align: center;
 }
 
+body {
+  background-image: url('https://c4.wallpaperflare.com/wallpaper/703/277/308/minimalism-notes-yellow-wallpaper-preview.jpg');
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh; 
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

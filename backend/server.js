@@ -34,10 +34,15 @@ const songSchema = new mongoose.Schema({
     songName: String,
     artistName: String,
     genre: String,
-    rating: String,
+    rating: {
+        type: Number,
+        min: 1,
+        max: 5
+    },
     review: String,
     albumCover: String
 });
+
 
 const Song = mongoose.model('Song', songSchema);
 

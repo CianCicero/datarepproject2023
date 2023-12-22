@@ -70,9 +70,19 @@ const EditSong =() => {
                 </Form.Group>
 
                 <Form.Group controlId="rating">
-                    <Form.Label>Rating</Form.Label>
-                    <Form.Control type="text" placeholder="Enter rating" value={rating} onChange={(e) => setRating(e.target.value)} />
-                </Form.Group>
+            <Form.Label>Rating</Form.Label>
+                 <Form.Control
+                     as="select"
+                     onChange={(e) => setRating(e.target.value)}
+                    value={rating}
+          >
+                     <option value="1">1</option>
+                     <option value="2">2</option>
+                     <option value="3">3</option>
+                     <option value="4">4</option>
+                     <option value="5">5</option>
+                </Form.Control>
+             </Form.Group>
 
                 <Form.Group controlId="review">
                     <Form.Label>Review</Form.Label>
