@@ -62,3 +62,20 @@ app.get('/songs', async (req, res) => {
         res.status(500).json(error);
     }
 });
+
+app.put('/songs/update/:id', async (req, res) => {
+    try {
+        const song = await Song.findById(req.params.id);
+        song.songName = req.body.songName;
+        song.artistName = req.body.artistName;
+        song.genre = req.body.genre;
+        song.rating = req.body.rating;
+        song.review = req.body.review;
+        song.albumCover = req.body.albumCover;
+        const updateSong = await song.save();
+        res.status(200).json(updateSong);
+    }
+    catch (error) {
+        res.status(500).json(error);
+    }
+});

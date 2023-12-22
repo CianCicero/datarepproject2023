@@ -48,6 +48,13 @@ const ViewSongs = () => {
             >
               Delete
             </button>
+
+            <button
+                className="btn btn-primary"
+                onClick={() => navigate(`/editsong/${song._id}`)}   
+            >
+                Edit
+            </button>
           </Card.Body>
         </Card>
       ))}
