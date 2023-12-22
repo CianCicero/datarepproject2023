@@ -29,3 +29,26 @@ async function connect()
 
 }
 connect();
+
+const songSchema = new mongoose.Schema({
+    songName: String,
+    artistName: String,
+    genre: String,
+    rating: String,
+    review: String,
+    albumCover: String
+});
+
+const Song = mongoose.model('Song', songSchema);
+
+
+app.post('/songs/add', async (req, res) => {
+    try {
+        const song = new Song(req.body);
+        const saveSong = await song.save();
+        res.status(200).json(saveSong);
+    }
+    catch (error) {
+        res.status(500).json(error);
+    }
+});
