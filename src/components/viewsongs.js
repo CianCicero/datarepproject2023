@@ -43,8 +43,8 @@ const ViewSongs = () => {
             <Card.Text>{song.rating}</Card.Text>
             <Card.Text>{song.review}</Card.Text>
             <button
-              className="btn btn-danger"
-              onClick={() => handleDelete(song._id)}
+                className="btn btn-danger"
+                onClick={() => navigate(`/deletesong/${song._id}`)}
             >
               Delete
             </button>

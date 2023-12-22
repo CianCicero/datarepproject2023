@@ -79,3 +79,13 @@ app.put('/songs/update/:id', async (req, res) => {
         res.status(500).json(error);
     }
 });
+
+app.delete('/songs/delete/:id', async (req, res) => {
+    try {
+        const song = await Song.findByIdAndDelete(req.params.id);
+        res.status(200).json(song);
+    }
+    catch (error) {
+        res.status(500).json(error);
+    }
+});

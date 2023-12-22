@@ -9,6 +9,7 @@ import Nav from 'react-bootstrap/Nav';
 import NavBar from 'react-bootstrap/NavBar';
 import ViewSongs from './components/viewsongs';
 import EditSong from './components/editsong';
+import DeleteSong from './components/deletesong';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path="/addsong" element={<AddSongReview />} ></Route>
         <Route path="/viewsongs" element={<ViewSongs />} ></Route>
         <Route path="/editsong/:id" element={<EditSong />} ></Route>
+        <Route path="/deletesong/:id" element={<DeleteSong />} ></Route>
       </Routes>
       </div>
       </>
