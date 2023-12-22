@@ -3,9 +3,14 @@ import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
+//edit song function
 const EditSong =() => {
     const navigate = useNavigate();
+
+    //extract id
     const { id } = useParams();
+
+    //set up state to hold song variables
     const [songName, setSong] = useState('');
     const [artistName, setArtist] = useState('');
     const [genre, setGenre] = useState('');
@@ -13,6 +18,7 @@ const EditSong =() => {
     const [review, setReview] = useState('');
     const [albumCover, setCover] = useState('');
 
+    //fetch song details from server
     useEffect(() => {
         axios.get(`http://localhost:4000/songs/${id}`)
         .then((res) => {
@@ -28,18 +34,14 @@ const EditSong =() => {
         })
     }, [id]);
 
+    //handle submission 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const song = {
-            songName,
-            artistName,
-            genre,
-            rating,
-            review,
-            albumCover
-        }
+        //place-holder object
+        const song = {songName, artistName, genre, rating, review, albumCover}
 
+        //send put request to update the song review in the sserver
         axios.put(`http://localhost:4000/songs/update/${id}`, song)
         .then((res) => {
             console.log(res.data);
@@ -50,6 +52,7 @@ const EditSong =() => {
         })
     }
 
+    //user inputs
     return (
         <div>
             <h1>Edit Song</h1>
@@ -93,6 +96,7 @@ const EditSong =() => {
                     <Form.Label>Album Cover</Form.Label>
                     <Form.Control type="text" placeholder="Enter album cover" value={albumCover} onChange={(e) => setCover(e.target.value)} />
                 </Form.Group>
+
 
                 <Button variant="primary" type="submit">
                     Submit`

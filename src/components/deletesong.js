@@ -3,11 +3,15 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { Form, Button } from 'react-bootstrap';
 
+
+//delete song function 
 const DeleteSong = () => {
     const navigate = useNavigate();
+// Extract the 'id' parameter 
     const { id } = useParams();
     const [songName, setSong] = useState('');
 
+ // Fetch song details using useEffect
     useEffect(() => {
         axios.get(`http://localhost:4000/songs/${id}`)
             .then((res) => {
@@ -18,13 +22,16 @@ const DeleteSong = () => {
             })
     }, [id]);
 
+    //handle submission
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        //create place-holder object
         const song = {
             songName,
         }
 
+        //send delete request to database
         axios.delete(`http://localhost:4000/songs/delete/${id}`, song)
             .then((res) => {
                 console.log(res.data);
@@ -35,6 +42,7 @@ const DeleteSong = () => {
             })
     }
 
+    //double check to avoid misclick
     return (
         <div>
             <h1>Are you sure you want to delete this song?</h1>

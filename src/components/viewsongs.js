@@ -4,16 +4,18 @@ import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
 import "./ViewSongs.css"; 
 
-
+//define function View Songs
 const ViewSongs = () => {
     const navigate = useNavigate();
     const [songs, setSongs] = useState([]);
   
+    //fetch songs from the server
     useEffect(() => {
       axios
         .get("http://localhost:4000/songs")
         .then((res) => {
           console.log(res.data);
+          //update songs
           setSongs(res.data);
         })
         .catch((err) => {
@@ -21,6 +23,7 @@ const ViewSongs = () => {
         });
     }, []);
   
+    //handle delete
     const handleDelete = (id) => {
         console.log("Deleting song with id:", id);
 
@@ -29,7 +32,7 @@ const ViewSongs = () => {
         .then((res) => {
           console.log(res.data);
           setSongs(songs.filter((song) => song._id !== id));
-          // Use navigate after successful deletion
+          // Use navigate after delete
           navigate("/");
         })
         .catch((err) => {
@@ -37,6 +40,7 @@ const ViewSongs = () => {
         });
     };
   
+    //user display + allowing for navigation to edit / delete
     return (
       <div>
         <div className="header">
