@@ -40,13 +40,13 @@ const DeleteSong = () => {
 
     return (
         <div>
-            <h1>Delete Song</h1>
+            <h1>Are you sure you want to delete this song?</h1>
 
             <Form onSubmit={handleSubmit}>
                 {/* Add Form controls for other input fields if needed */}
                 {/* For demonstration, I'm just using the Button here */}
                 <Button variant="primary" type="submit">
-                    Delete Song
+                    Yes, delete this song
                 </Button>
             </Form>
         </div>
