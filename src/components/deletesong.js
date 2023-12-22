@@ -45,7 +45,7 @@ const DeleteSong = () => {
             <Form onSubmit={handleSubmit}>
                 {/* Add Form controls for other input fields if needed */}
                 {/* For demonstration, I'm just using the Button here */}
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" className="btn danger-btn">
                     Yes, delete this song
                 </Button>
             </Form>
