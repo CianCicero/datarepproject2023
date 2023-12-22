@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/esm/Container';
 import Nav from 'react-bootstrap/Nav';
 import NavBar from 'react-bootstrap/NavBar';
+import ViewSongs from './components/viewsongs';
 
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
           <NavBar.Brand href="/">Music Review</NavBar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/addsong">Add Song</Nav.Link>
+            <Nav.Link href="/viewsongs">View Songs</Nav.Link>
+
           </Nav>
         </Container>
       </NavBar>
@@ -25,7 +28,7 @@ function App() {
       <div>
       <Routes>
         <Route path="/addsong" element={<AddSongReview />} ></Route>
-        
+        <Route path="/viewsongs" element={<ViewSongs />} ></Route>
       </Routes>
       </div>
       </>

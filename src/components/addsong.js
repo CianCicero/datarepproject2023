@@ -35,12 +35,10 @@ const handleSubmit = async (e) => {
         {console.log(res.data);
 
             navigate("/");
-}).catch((err) => {console.log(err)});
+     }).catch((err) => {console.log(err)});
 
 }
 
-
-const songForm = () => {
     return (
         <Container>
             <Form onSubmit={handleSubmit}>
@@ -80,6 +78,5 @@ const songForm = () => {
             </Form>
         </Container>
     )}
-}
 
 export default AddSongReview;

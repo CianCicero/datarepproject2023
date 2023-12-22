@@ -52,3 +52,13 @@ app.post('/songs/add', async (req, res) => {
         res.status(500).json(error);
     }
 });
+
+app.get('/songs', async (req, res) => {
+    try {
+        const songs = await Song.find();
+        res.status(200).json(songs);
+    }
+    catch (error) {
+        res.status(500).json(error);
+    }
+});
