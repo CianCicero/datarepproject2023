@@ -11,10 +11,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
+//log to console to show port connection
 const server = app.listen(port, () => {
     console.log('Connected to port ' + port)
 });
 
+//connection to mongoose database
 async function connect() 
 {
     try {
@@ -30,6 +32,7 @@ async function connect()
 }
 connect();
 
+//schema for song reviews
 const songSchema = new mongoose.Schema({
     songName: String,
     artistName: String,
@@ -46,7 +49,7 @@ const songSchema = new mongoose.Schema({
 
 const Song = mongoose.model('Song', songSchema);
 
-
+//adding song review to database
 app.post('/songs/add', async (req, res) => {
     try {
         const song = new Song(req.body);
@@ -58,6 +61,7 @@ app.post('/songs/add', async (req, res) => {
     }
 });
 
+//pull song reviews from database
 app.get('/songs', async (req, res) => {
     try {
         const songs = await Song.find();
@@ -68,6 +72,7 @@ app.get('/songs', async (req, res) => {
     }
 });
 
+//edit song reviews in database
 app.put('/songs/update/:id', async (req, res) => {
     try {
         const song = await Song.findById(req.params.id);
@@ -85,6 +90,7 @@ app.put('/songs/update/:id', async (req, res) => {
     }
 });
 
+//delete songs from database
 app.delete('/songs/delete/:id', async (req, res) => {
     try {
         const song = await Song.findByIdAndDelete(req.params.id);

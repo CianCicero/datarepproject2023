@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 
+//handle user inputs
 const AddSongReview = () => {
 
     const navigate = useNavigate();
@@ -20,28 +21,28 @@ const AddSongReview = () => {
 
 const handleSubmit = async (e) => {
 
+    //allow us to manually handle the submission
     e.preventDefault();
 
-    const song = {songName,
-        artistName,
-        genre,
-        rating,
-        review,
-        albumCover
-    }
+    //take data into song object
+    const song = {songName, artistName, genre, rating, review, albumCover}
 
+    //send post request to backend
      axios.post('http://localhost:4000/songs/add', song)
         .then((res) => 
         {console.log(res.data);
 
+            //return to home after succesful submission
             navigate("/");
      }).catch((err) => {console.log(err)});
 
 }
 
+//container to hold form, form holds inputs for song variables
     return (
         <Container>
             <Form onSubmit={handleSubmit}>
+                
                 <Form.Group controlId="songName">
                     <Form.Label>Song Name</Form.Label>
                     <Form.Control type="text" placeholder="Enter song name" onChange={(e) => setSong(e.target.value)} />
@@ -82,9 +83,10 @@ const handleSubmit = async (e) => {
                     <Form.Control type="text" placeholder="Enter album cover" onChange={(e) => setCover(e.target.value)} />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button variant="dark" type="submit" style={{ backgroundColor: 'black', color: 'yellow' }}>
                     Submit
                 </Button>
+
             </Form>
         </Container>
     )}

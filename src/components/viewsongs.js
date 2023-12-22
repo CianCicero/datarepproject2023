@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "react-bootstrap/Card";
 import { useNavigate } from "react-router-dom";
-import "./ViewSongs.css"; // Import your custom CSS file
+import "./ViewSongs.css"; 
 
-// ... (other imports)
 
 const ViewSongs = () => {
     const navigate = useNavigate();
@@ -51,8 +50,8 @@ const ViewSongs = () => {
               <Card.Body>
                 <Card.Title>{song.songName}</Card.Title>
                 <Card.Text>{song.artistName}</Card.Text>
-                <Card.Text>{song.genre}</Card.Text>
-                <Card.Text>{song.rating}</Card.Text>
+                <Card.Text>Genre: {song.genre}</Card.Text>
+                <Card.Text> Rating: {song.rating}</Card.Text>
                 <Card.Text>{song.review}</Card.Text>
                 <button
                   className="btn btn-danger"
